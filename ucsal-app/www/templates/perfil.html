@@ -1,0 +1,66 @@
+<ion-view view-title="Atualização Cadastral">
+  <ion-content class="padding">
+
+    <div class="list card">
+      <div class="item item-divider" style="background-color:#002B5C; color:#FFF;">
+        Dados Académicos (Somente Leitura)
+      </div>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Nome Completo</span>
+        <input type="text" ng-model="aluno.nome" ng-disabled="true" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Matrícula</span>
+        <input type="text" ng-model="aluno.matricula" ng-disabled="true" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Curso</span>
+        <input type="text" ng-model="aluno.curso" ng-disabled="true" />
+      </label>
+    </div>
+
+    <div class="list card">
+      <div class="item item-divider" style="background-color:#0072CE; color:#FFF;">
+        Dados de Contacto e Endereço (Editáveis)
+      </div>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">E-mail Pessoal</span>
+        <input type="email" ng-model="aluno.email" placeholder="seuemail@dominio.com" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Telefone / WhatsApp</span>
+        <input type="text" ng-model="aluno.telefone" placeholder="(71) 99999-9999" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">CEP</span>
+        <input type="text" ng-model="aluno.endereco.cep" placeholder="00000-000" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Rua e Número</span>
+        <input type="text" ng-model="aluno.endereco.rua" placeholder="Nome da rua e número" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Bairro</span>
+        <input type="text" ng-model="aluno.endereco.bairro" placeholder="Ex.: Pituaçu" />
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Cidade / UF</span>
+        <input type="text" ng-model="aluno.endereco.cidade" placeholder="Salvador - BA" />
+      </label>
+    </div>
+
+    <button class="button button-block button-ucsal" ng-click="salvarCadastro()">
+      <i class="icon ion-checkmark-circled"></i> Salvar Alterações
+    </button>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,156 @@
+:root {
+  --ucsal-navy: #002B5C;
+  --ucsal-light-blue: #0072CE;
+  --ucsal-white: #FFFFFF;
+  --ucsal-bg: #F4F7FA;
+  --status-paid: #16A34A;
+  --status-pending: #D97706;
+}
+
+.pane, .view, .scroll-content {
+  background-color: var(--ucsal-bg);
+}
+
+.bar.bar-ucsal {
+  background-color: var(--ucsal-navy);
+  border-color: var(--ucsal-navy);
+  color: var(--ucsal-white);
+}
+
+.bar.bar-ucsal .title,
+.bar.bar-ucsal .button {
+  color: var(--ucsal-white);
+}
+
+.menu-ucsal-header {
+  background: linear-gradient(135deg, var(--ucsal-navy) 0%, var(--ucsal-light-blue) 100%);
+  color: var(--ucsal-white);
+  padding: 24px 16px;
+}
+
+.menu-ucsal-header h3 {
+  color: var(--ucsal-white);
+  margin: 8px 0 2px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.menu-ucsal-header p {
+  color: #D0E6FF;
+  margin: 0;
+  font-size: 12px;
+}
+
+.button.button-ucsal {
+  background-color: var(--ucsal-navy);
+  color: var(--ucsal-white);
+  border-color: var(--ucsal-navy);
+  font-weight: 600;
+}
+
+.button.button-ucsal:hover,
+.button.button-ucsal.activated {
+  background-color: var(--ucsal-light-blue);
+  border-color: var(--ucsal-light-blue);
+  color: var(--ucsal-white);
+}
+
+.button.button-ucsal-light {
+  background-color: var(--ucsal-light-blue);
+  color: var(--ucsal-white);
+  border: none;
+}
+
+.login-bg {
+  background: linear-gradient(180deg, var(--ucsal-navy) 0%, #001833 100%);
+}
+
+.login-card {
+  max-width: 420px;
+  margin: 40px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.login-brand {
+  background-color: var(--ucsal-white);
+  text-align: center;
+  padding: 24px 16px 12px;
+  border-bottom: 3px solid var(--ucsal-light-blue);
+}
+
+.login-brand h1 {
+  color: var(--ucsal-navy);
+  font-weight: 800;
+  font-size: 26px;
+  margin: 0;
+}
+
+.login-brand span {
+  color: var(--ucsal-light-blue);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.news-cover {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.badge-categoria {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-noticia {
+  background-color: var(--ucsal-navy);
+  color: var(--ucsal-white);
+}
+
+.badge-evento {
+  background-color: var(--ucsal-light-blue);
+  color: var(--ucsal-white);
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.status-paga {
+  background-color: var(--status-paid);
+}
+
+.status-apagar {
+  background-color: var(--status-pending);
+}
+
+input[disabled],
+input[readonly] {
+  background-color: #E2E8F0 !important;
+  color: #475569 !important;
+  cursor: not-allowed;
+  padding-left: 8px !important;
+  border-radius: 4px;
+}
+
+.error-banner {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border-left: 4px solid #DC2626;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}

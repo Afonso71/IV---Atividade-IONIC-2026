@@ -1,0 +1,45 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-ucsal">
+      <ion-nav-back-button></ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content>
+      <div class="menu-ucsal-header">
+        <i class="icon ion-university" style="font-size: 28px;"></i>
+        <h3>{{ aluno.nome || 'Estudante UCSal' }}</h3>
+        <p>Matrícula: {{ aluno.matricula }} • {{ aluno.curso }}</p>
+      </div>
+
+      <ion-list>
+        <ion-item menu-close href="#/app/noticias" class="item-icon-left">
+          <i class="icon ion-speakerphone"></i>
+          Mural de Notícias e Eventos
+        </ion-item>
+
+        <ion-item menu-close href="#/app/perfil" class="item-icon-left">
+          <i class="icon ion-person"></i>
+          Atualização Cadastral
+        </ion-item>
+
+        <ion-item menu-close href="#/app/financeiro" class="item-icon-left">
+          <i class="icon ion-cash"></i>
+          Consulta Financeira
+        </ion-item>
+
+        <ion-item menu-close ng-click="sair()" class="item-icon-left item-assertive">
+          <i class="icon ion-log-out"></i>
+          Sair da Conta
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

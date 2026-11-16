@@ -1,0 +1,47 @@
+<ion-view view-title="Login UCSal" hide-nav-bar="true" class="login-bg">
+  <ion-content class="padding">
+    <div class="card login-card">
+      <div class="login-brand">
+        <h1>UCSAL</h1>
+        <span>Portal de Autoatendimento do Aluno</span>
+      </div>
+
+      <div class="item item-body">
+        <div class="error-banner" ng-if="erroLogin">
+          <i class="icon ion-alert-circled"></i> {{ erroLogin }}
+        </div>
+
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Matrícula Institucional</span>
+            <input
+              type="text"
+              placeholder="Ex.: 20261001"
+              ng-model="credenciais.matricula"
+            />
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Senha de Acesso</span>
+            <input
+              type="password"
+              placeholder="Digite a sua senha"
+              ng-model="credenciais.senha"
+            />
+          </label>
+        </div>
+
+        <button
+          class="button button-block button-ucsal"
+          ng-click="fazerLogin()"
+        >
+          <i class="icon ion-log-in"></i> Entrar no Portal
+        </button>
+
+        <p style="text-align:center; font-size:12px; color:#64748B; margin-top:12px;">
+          Credencial de teste: Matrícula <strong>20261001</strong> | Senha <strong>123456</strong>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

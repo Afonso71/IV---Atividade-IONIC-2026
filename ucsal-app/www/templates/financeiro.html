@@ -1,0 +1,61 @@
+<ion-view view-title="Consulta Financeira">
+  <ion-content class="padding">
+
+    <div class="list card">
+      <label class="item item-input item-select">
+        <div class="input-label" style="font-weight:700; color:#002B5C;">
+          Semestre Letivo:
+        </div>
+        <select
+          ng-model="filtro.semestreSelecionado"
+          ng-options="sem for sem in semestresDisponiveis"
+          ng-change="carregarMensalidades()"
+        ></select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">Filtrar por Status:</div>
+        <select ng-model="filtro.statusBusca">
+          <option value="">Todas as Parcelas</option>
+          <option value="Paga">Somente Pagas</option>
+          <option value="A Pagar">Somente A Pagar</option>
+        </select>
+      </label>
+    </div>
+
+    <div
+      class="list card"
+      ng-repeat="parcela in mensalidades | filter:{ status: filtro.statusBusca }"
+    >
+      <div class="item item-divider" style="display:flex; justify-content:space-between; align-items:center;">
+        <strong style="color:#002B5C;">{{ parcela.mes }}</strong>
+        <span
+          class="status-badge"
+          ng-class="parcela.status === 'Paga' ? 'status-paga' : 'status-apagar'"
+        >
+          {{ parcela.status }}
+        </span>
+      </div>
+
+      <div class="item item-body">
+        <p style="margin-top:0;">
+          <strong>Vencimento:</strong> {{ parcela.vencimento }}<br />
+          <strong>Valor da Parcela:</strong>
+          <span style="font-size:16px; font-weight:700; color:#002B5C;">
+            {{ parcela.valor | currency:"R$ " }}
+          </span>
+        </p>
+
+        <div ng-if="parcela.status === 'A Pagar'" style="margin-top:10px;">
+          <button
+            class="button button-block button-small button-ucsal-light"
+            ng-click="copiarCodigoBarras(parcela)"
+          >
+            <i class="icon ion-ios-barcode-outline"></i> Copiar Código de Barras
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
