@@ -18,9 +18,6 @@ angular.module('ucsalApp', ['ionic'])
               '<span class="page-eyebrow">Tesouraria Acadêmica • Demonstrativo de Mensalidades</span>' +
               '<h2 class="page-title">Extrato Financeiro por Semestre</h2>' +
             '</div>' +
-            '<button type="button" class="button btn-ucsal-outline" ng-click="voltarAoMural()">' +
-              '<i class="icon ion-arrow-left-c"></i> <span>Voltar ao Mural</span>' +
-            '</button>' +
           '</div>' +
           '<div class="finance-toolbar">' +
             '<div>' +
