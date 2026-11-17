@@ -1,28 +1,30 @@
-<ion-view view-title="Detalhe da Publicação">
-  <ion-content class="padding">
-    <div class="list card" ng-if="publicacao">
-      <div class="item item-image">
-        <img ng-src="{{ publicacao.imagem }}" alt="{{ publicacao.titulo }}" class="news-cover" />
-      </div>
+<ion-view view-title="Publicação Institucional">
+  <ion-content>
+    <div class="portal-container" ng-if="publicacao">
+      <div class="panel-section">
+        <div class="news-thumb-wrap" style="height: 260px;">
+          <img ng-src="{{ publicacao.imagem }}" alt="{{ publicacao.titulo }}" class="news-thumb" />
+        </div>
 
-      <div class="item item-body">
-        <span
-          class="badge-categoria"
-          ng-class="publicacao.categoria === 'Evento' ? 'badge-evento' : 'badge-noticia'"
-        >
-          {{ publicacao.categoria }}
-        </span>
-        <span style="font-size:12px; color:#64748B; margin-left:8px;">
-          {{ publicacao.data }} | {{ publicacao.campus }}
-        </span>
+        <div style="padding: 24px;">
+          <div class="news-meta-row">
+            <span
+              class="badge-categoria"
+              ng-class="publicacao.categoria === 'Evento' ? 'badge-evento' : 'badge-noticia'"
+            >
+              {{ publicacao.categoria }}
+            </span>
+            <span class="news-date">{{ publicacao.data }} • {{ publicacao.campus }}</span>
+          </div>
 
-        <h2 style="color:#002B5C; font-weight:700; margin-top:12px;">
-          {{ publicacao.titulo }}
-        </h2>
+          <h2 class="page-title" style="margin: 10px 0 14px 0;">
+            {{ publicacao.titulo }}
+          </h2>
 
-        <p style="line-height:1.6; color:#1E293B;">
-          {{ publicacao.conteudo }}
-        </p>
+          <p style="font-size: 14px; line-height: 1.7; color: #334155;">
+            {{ publicacao.conteudo }}
+          </p>
+        </div>
       </div>
     </div>
   </ion-content>

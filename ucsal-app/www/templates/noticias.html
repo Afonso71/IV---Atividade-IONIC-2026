@@ -1,62 +1,80 @@
-<ion-view view-title="Mural UCSal">
-  <ion-content class="padding">
+<ion-view view-title="Mural Acadêmico UCSal">
+  <ion-content>
+    <div class="portal-container">
 
-    <div class="button-bar margin-bottom">
-      <a
-        class="button button-small"
-        ng-class="filtroCategoria === '' ? 'button-ucsal' : 'button-stable'"
-        ng-click="selecionarCategoria('')"
-      >
-        Todas
-      </a>
-      <a
-        class="button button-small"
-        ng-class="filtroCategoria === 'Notícia' ? 'button-ucsal' : 'button-stable'"
-        ng-click="selecionarCategoria('Notícia')"
-      >
-        Notícias
-      </a>
-      <a
-        class="button button-small"
-        ng-class="filtroCategoria === 'Evento' ? 'button-ucsal' : 'button-stable'"
-        ng-click="selecionarCategoria('Evento')"
-      >
-        Eventos
-      </a>
-    </div>
+      <div class="page-header-block">
+        <div>
+          <span class="page-eyebrow">Comunicação Institucional • Campi Pituaçu e Federação</span>
+          <h2 class="page-title">Notícias e Atividades Acadêmicas</h2>
+        </div>
 
-    <div
-      class="list card"
-      ng-repeat="item in publicacoes | filter:{ categoria: filtroCategoria }"
-    >
-      <div class="item item-divider" style="display:flex; justify-content:space-between; align-items:center;">
-        <span
-          class="badge-categoria"
-          ng-class="item.categoria === 'Evento' ? 'badge-evento' : 'badge-noticia'"
+        <div class="filter-pills">
+          <button
+            type="button"
+            class="filter-pill-btn"
+            ng-class="{'active': filtroCategoria === ''}"
+            ng-click="selecionarCategoria('')"
+          >
+            Todas
+          </button>
+          <button
+            type="button"
+            class="filter-pill-btn"
+            ng-class="{'active': filtroCategoria === 'Notícia'}"
+            ng-click="selecionarCategoria('Notícia')"
+          >
+            Notícias
+          </button>
+          <button
+            type="button"
+            class="filter-pill-btn"
+            ng-class="{'active': filtroCategoria === 'Evento'}"
+            ng-click="selecionarCategoria('Evento')"
+          >
+            Eventos
+          </button>
+        </div>
+      </div>
+
+      <div class="news-grid">
+        <article
+          class="news-card"
+          ng-repeat="item in publicacoes | filter:{ categoria: filtroCategoria }"
         >
-          {{ item.categoria }}
-        </span>
-        <span style="font-size:12px; color:#475569;">
-          <i class="icon ion-calendar"></i> {{ item.data }} • {{ item.campus }}
-        </span>
+          <div class="news-thumb-wrap">
+            <img ng-src="{{ item.imagem }}" alt="{{ item.titulo }}" class="news-thumb" />
+          </div>
+
+          <div class="news-card-body">
+            <div class="news-meta-row">
+              <span
+                class="badge-categoria"
+                ng-class="item.categoria === 'Evento' ? 'badge-evento' : 'badge-noticia'"
+              >
+                {{ item.categoria }}
+              </span>
+              <span class="news-date">{{ item.data }}</span>
+            </div>
+
+            <h3 class="news-title">{{ item.titulo }}</h3>
+            <p class="news-summary">{{ item.resumo }}</p>
+
+            <div class="news-footer-bar">
+              <span class="news-campus-tag">
+                <i class="icon ion-ios-location-outline"></i> {{ item.campus }}
+              </span>
+              <button
+                type="button"
+                class="button btn-ucsal-outline"
+                ng-click="abrirDetalhe(item.id)"
+              >
+                Ler mais
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="item item-image">
-        <img ng-src="{{ item.imagem }}" alt="{{ item.titulo }}" class="news-cover" />
-      </div>
-
-      <div class="item item-body">
-        <h2 style="margin-top:0; font-weight:700; color:#002B5C;">{{ item.titulo }}</h2>
-        <p>{{ item.resumo }}</p>
-
-        <button
-          class="button button-small button-ucsal-light"
-          ng-click="abrirDetalhe(item.id)"
-        >
-          Ler mais <i class="icon ion-arrow-right-c"></i>
-        </button>
-      </div>
     </div>
-
   </ion-content>
 </ion-view>

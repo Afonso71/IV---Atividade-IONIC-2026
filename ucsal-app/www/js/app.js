@@ -69,12 +69,18 @@ angular.module('ucsalApp', ['ionic'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('MenuCtrl', function($scope, $rootScope, $state, AuthService) {
+.controller('MenuCtrl', function($scope, $rootScope, $state, $ionicSideMenuDelegate, AuthService) {
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.aluno = $rootScope.alunoLogado || AuthService.getUsuarioLogado();
   });
 
+  $scope.navegarPara = function(rota) {
+    $ionicSideMenuDelegate.toggleLeft(false);
+    $state.go(rota);
+  };
+
   $scope.sair = function() {
+    $ionicSideMenuDelegate.toggleLeft(false);
     AuthService.logout();
     $rootScope.alunoLogado = null;
     $state.go('login');

@@ -48,7 +48,7 @@ angular.module('ucsalApp')
           return angular.copy(listaAlunos[i]);
         }
       }
-      return null;
+      return angular.copy(alunosPadrao[0]);
     },
 
     atualizarCadastro: function(dadosAtualizados) {

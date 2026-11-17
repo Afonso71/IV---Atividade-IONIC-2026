@@ -11,33 +11,34 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" class="menu-sidebar-bg">
     <ion-content>
-      <div class="menu-ucsal-header">
-        <i class="icon ion-university" style="font-size: 28px;"></i>
-        <h3>{{ aluno.nome || 'Estudante UCSal' }}</h3>
-        <p>Matrícula: {{ aluno.matricula }} • {{ aluno.curso }}</p>
+      <div class="menu-profile-box">
+        <div class="menu-avatar-badge">AM</div>
+        <h3>{{ aluno.nome || 'Afonso de Menezes Alves Neto' }}</h3>
+        <span class="menu-matricula">MAT. {{ aluno.matricula || '20261001' }}</span>
+        <span class="menu-curso">{{ aluno.curso || 'Engenharia de Software' }}</span>
       </div>
 
-      <ion-list>
-        <ion-item menu-close href="#/app/noticias" class="item-icon-left">
-          <i class="icon ion-speakerphone"></i>
-          Mural de Notícias e Eventos
+      <ion-list class="menu-nav-list">
+        <ion-item menu-close ng-click="navegarPara('app.noticias')" class="item-icon-left">
+          <i class="icon ion-ios-paper-outline"></i>
+          Mural Acadêmico
         </ion-item>
 
-        <ion-item menu-close href="#/app/perfil" class="item-icon-left">
-          <i class="icon ion-person"></i>
-          Atualização Cadastral
+        <ion-item menu-close ng-click="navegarPara('app.perfil')" class="item-icon-left">
+          <i class="icon ion-ios-person-outline"></i>
+          Dados Cadastrais
         </ion-item>
 
-        <ion-item menu-close href="#/app/financeiro" class="item-icon-left">
-          <i class="icon ion-cash"></i>
+        <ion-item menu-close ng-click="navegarPara('app.financeiro')" class="item-icon-left">
+          <i class="icon ion-ios-Albums-outline ion-card"></i>
           Consulta Financeira
         </ion-item>
 
-        <ion-item menu-close ng-click="sair()" class="item-icon-left item-assertive">
+        <ion-item menu-close ng-click="sair()" class="item-icon-left item-logout">
           <i class="icon ion-log-out"></i>
-          Sair da Conta
+          Encerrar Sessão
         </ion-item>
       </ion-list>
     </ion-content>

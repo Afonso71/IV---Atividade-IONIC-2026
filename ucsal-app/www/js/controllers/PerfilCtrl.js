@@ -12,8 +12,8 @@ angular.module('ucsalApp')
         !$scope.aluno.endereco.cep || !$scope.aluno.endereco.rua) {
       $ionicPopup.alert({
         title: 'Campos Obrigatórios',
-        template: 'Preencha o e-mail, telefone e os dados de endereço antes de guardar.',
-        okType: 'button-ucsal'
+        template: 'Preencha o e-mail, telefone e endereço completo antes de salvar.',
+        okType: 'btn-ucsal-primary'
       });
       return;
     }
@@ -21,9 +21,10 @@ angular.module('ucsalApp')
     AlunoService.atualizarCadastro($scope.aluno);
 
     $ionicPopup.alert({
-      title: 'Cadastro Atualizado',
-      template: 'Os seus dados de contacto e endereço foram atualizados com sucesso no Portal UCSal!',
-      okType: 'button-ucsal'
+      title: 'Dados Atualizados',
+      template: 'Suas informações de contato e endereço foram salvas no registro acadêmico.',
+      okText: 'Confirmar',
+      okType: 'btn-ucsal-primary'
     });
   };
 });

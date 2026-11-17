@@ -1,61 +1,75 @@
 <ion-view view-title="Consulta Financeira">
-  <ion-content class="padding">
+  <ion-content>
+    <div class="portal-container">
 
-    <div class="list card">
-      <label class="item item-input item-select">
-        <div class="input-label" style="font-weight:700; color:#002B5C;">
-          Semestre Letivo:
+      <div class="page-header-block">
+        <div>
+          <span class="page-eyebrow">Tesouraria Acadêmica • Demonstrativo de Mensalidades</span>
+          <h2 class="page-title">Extrato Financeiro por Semestre</h2>
         </div>
-        <select
-          ng-model="filtro.semestreSelecionado"
-          ng-options="sem for sem in semestresDisponiveis"
-          ng-change="carregarMensalidades()"
-        ></select>
-      </label>
+      </div>
 
-      <label class="item item-input item-select">
-        <div class="input-label">Filtrar por Status:</div>
-        <select ng-model="filtro.statusBusca">
-          <option value="">Todas as Parcelas</option>
-          <option value="Paga">Somente Pagas</option>
-          <option value="A Pagar">Somente A Pagar</option>
-        </select>
-      </label>
-    </div>
+      <div class="finance-toolbar">
+        <div>
+          <label class="field-label">Semestre Letivo</label>
+          <select
+            class="select-control mono-code"
+            ng-model="filtro.semestreSelecionado"
+            ng-options="sem for sem in semestresDisponiveis"
+            ng-change="carregarMensalidades()"
+          ></select>
+        </div>
 
-    <div
-      class="list card"
-      ng-repeat="parcela in mensalidades | filter:{ status: filtro.statusBusca }"
-    >
-      <div class="item item-divider" style="display:flex; justify-content:space-between; align-items:center;">
-        <strong style="color:#002B5C;">{{ parcela.mes }}</strong>
-        <span
-          class="status-badge"
-          ng-class="parcela.status === 'Paga' ? 'status-paga' : 'status-apagar'"
+        <div>
+          <label class="field-label">Filtrar por Situação</label>
+          <select class="select-control" ng-model="filtro.statusBusca">
+            <option value="">Todas as Parcelas</option>
+            <option value="Paga">Somente Pagas</option>
+            <option value="A Pagar">Somente A Pagar</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="invoice-list">
+        <div
+          class="invoice-card"
+          ng-repeat="parcela in mensalidades | filter:{ status: filtro.statusBusca }"
+          ng-class="parcela.status === 'Paga' ? 'invoice-paid' : 'invoice-pending'"
         >
-          {{ parcela.status }}
-        </span>
-      </div>
+          <div class="invoice-main-row">
+            <div>
+              <h3 class="invoice-month">{{ parcela.mes }}</h3>
+              <p class="invoice-due">
+                Vencimento: <span class="mono-code">{{ parcela.vencimento }}</span>
+              </p>
+            </div>
 
-      <div class="item item-body">
-        <p style="margin-top:0;">
-          <strong>Vencimento:</strong> {{ parcela.vencimento }}<br />
-          <strong>Valor da Parcela:</strong>
-          <span style="font-size:16px; font-weight:700; color:#002B5C;">
-            {{ parcela.valor | currency:"R$ " }}
-          </span>
-        </p>
+            <div class="invoice-right-col">
+              <span class="invoice-amount">
+                {{ parcela.valor | currency:"R$ " }}
+              </span>
+              <span
+                class="status-badge"
+                ng-class="parcela.status === 'Paga' ? 'status-paga' : 'status-apagar'"
+              >
+                {{ parcela.status }}
+              </span>
+            </div>
+          </div>
 
-        <div ng-if="parcela.status === 'A Pagar'" style="margin-top:10px;">
-          <button
-            class="button button-block button-small button-ucsal-light"
-            ng-click="copiarCodigoBarras(parcela)"
-          >
-            <i class="icon ion-ios-barcode-outline"></i> Copiar Código de Barras
-          </button>
+          <div class="invoice-barcode-Drawer" ng-if="parcela.status === 'A Pagar'">
+            <span class="barcode-preview">{{ parcela.codigoBarras }}</span>
+            <button
+              type="button"
+              class="button btn-ucsal-outline"
+              ng-click="copiarCodigoBarras(parcela)"
+            >
+              <i class="icon ion-ios-barcode-outline"></i> Copiar Código de Barras
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </ion-content>
 </ion-view>

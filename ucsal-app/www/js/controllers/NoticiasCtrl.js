@@ -1,7 +1,7 @@
 angular.module('ucsalApp')
 .controller('NoticiasCtrl', function($scope, $state, NoticiasService) {
   $scope.publicacoes = NoticiasService.listarTodas();
-  $scope.filtroCategoria = ''; 
+  $scope.filtroCategoria = '';
 
   $scope.selecionarCategoria = function(categoria) {
     $scope.filtroCategoria = categoria;

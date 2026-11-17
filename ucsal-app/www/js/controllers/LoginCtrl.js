@@ -10,7 +10,7 @@ angular.module('ucsalApp')
     $scope.erroLogin = '';
 
     if (!$scope.credenciais.matricula || !$scope.credenciais.senha) {
-      $scope.erroLogin = 'Por favor, preencha a Matrícula e a Senha para entrar.';
+      $scope.erroLogin = 'Informe sua Matrícula e Senha para autenticar.';
       return;
     }
 

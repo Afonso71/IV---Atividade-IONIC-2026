@@ -3,24 +3,20 @@ angular.module('ucsalApp')
   var SESSION_KEY = 'ucsal_sessao_aluno';
 
   var credenciaisMock = [
-    {
-      matricula: '20261001',
-      senha: '123456'
-    },
-    {
-      matricula: '20261002',
-      senha: 'ucsal2026'
-    }
+    { matricula: '20261001', senha: '123456' },
+    { matricula: '20261002', senha: 'ucsal2026' }
   ];
 
   return {
     autenticar: function(matricula, senha) {
       var encontrado = null;
+      var matLimpa = String(matricula || '').trim();
+      var senhaLimpa = String(senha || '').trim();
 
       for (var i = 0; i < credenciaisMock.length; i++) {
-        if (credenciaisMock[i].matricula === String(matricula).trim() &&
-            credenciaisMock[i].senha === String(senha).trim()) {
-          encontrado = AlunoService.buscarPorMatricula(credenciaisMock[i].matricula);
+        if (credenciaisMock[i].matricula === matLimpa &&
+            credenciaisMock[i].senha === senhaLimpa) {
+          encontrado = AlunoService.buscarPorMatricula(matLimpa);
           break;
         }
       }
@@ -33,7 +29,7 @@ angular.module('ucsalApp')
 
       return {
         sucesso: false,
-        mensagem: 'Matrícula ou senha inválidas. Tente 20261001 / 123456.'
+        mensagem: 'Credenciais inválidas. Verifique sua matrícula e senha.'
       };
     },
 
@@ -46,7 +42,7 @@ angular.module('ucsalApp')
         $rootScope.alunoLogado = JSON.parse(salvo);
         return $rootScope.alunoLogado;
       }
-      return null;
+      return AlunoService.buscarPorMatricula('20261001');
     },
 
     logout: function() {

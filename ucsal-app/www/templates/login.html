@@ -1,46 +1,51 @@
-<ion-view view-title="Login UCSal" hide-nav-bar="true" class="login-bg">
-  <ion-content class="padding">
-    <div class="card login-card">
-      <div class="login-brand">
-        <h1>UCSAL</h1>
-        <span>Portal de Autoatendimento do Aluno</span>
-      </div>
-
-      <div class="item item-body">
-        <div class="error-banner" ng-if="erroLogin">
-          <i class="icon ion-alert-circled"></i> {{ erroLogin }}
+<ion-view view-title="Acesso Acadêmico" hide-nav-bar="true">
+  <ion-content scroll="true">
+    <div class="login-viewport">
+      <div class="login-shell">
+        <div class="login-top-strip">
+          <span class="inst-tag">Universidade Católica do Salvador</span>
+          <h1>Portal do Aluno</h1>
+          <p>Autoatendimento Acadêmico e Financeiro</p>
         </div>
 
-        <div class="list">
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Matrícula Institucional</span>
+        <div class="login-form-body">
+          <div class="error-banner" ng-if="erroLogin">
+            <i class="icon ion-alert-circled"></i> {{ erroLogin }}
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Matrícula Institucional</label>
             <input
               type="text"
+              class="field-input mono-code"
               placeholder="Ex.: 20261001"
               ng-model="credenciais.matricula"
             />
-          </label>
+          </div>
 
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Senha de Acesso</span>
+          <div class="field-group">
+            <label class="field-label">Senha de Acesso</label>
             <input
               type="password"
-              placeholder="Digite a sua senha"
+              class="field-input"
+              placeholder="Digite sua senha"
               ng-model="credenciais.senha"
             />
-          </label>
+          </div>
+
+          <button
+            type="button"
+            class="button button-block btn-ucsal-primary"
+            ng-click="fazerLogin()"
+          >
+            Acessar Portal Acadêmico
+          </button>
+
+          <div class="login-hint-box">
+            <strong>Acesso de demonstração:</strong><br />
+            Matrícula <span class="mono-code">20261001</span> • Senha <span class="mono-code">123456</span>
+          </div>
         </div>
-
-        <button
-          class="button button-block button-ucsal"
-          ng-click="fazerLogin()"
-        >
-          <i class="icon ion-log-in"></i> Entrar no Portal
-        </button>
-
-        <p style="text-align:center; font-size:12px; color:#64748B; margin-top:12px;">
-          Credencial de teste: Matrícula <strong>20261001</strong> | Senha <strong>123456</strong>
-        </p>
       </div>
     </div>
   </ion-content>

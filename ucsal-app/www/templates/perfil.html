@@ -1,66 +1,87 @@
 <ion-view view-title="Atualização Cadastral">
-  <ion-content class="padding">
+  <ion-content>
+    <div class="portal-container">
 
-    <div class="list card">
-      <div class="item item-divider" style="background-color:#002B5C; color:#FFF;">
-        Dados Académicos (Somente Leitura)
+      <div class="page-header-block">
+        <div>
+          <span class="page-eyebrow">Secretaria Geral de Cursos • Registro do Estudante</span>
+          <h2 class="page-title">Ficha Cadastral e Endereço</h2>
+        </div>
       </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Nome Completo</span>
-        <input type="text" ng-model="aluno.nome" ng-disabled="true" />
-      </label>
+      <div class="panel-section">
+        <div class="panel-section-head">
+          <h3>Vínculo Institucional</h3>
+          <span>SOMENTE LEITURA</span>
+        </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Matrícula</span>
-        <input type="text" ng-model="aluno.matricula" ng-disabled="true" />
-      </label>
+        <div class="panel-form-grid">
+          <div class="col-span-full">
+            <label class="field-label">Nome Completo do Estudante</label>
+            <input type="text" class="field-input" ng-model="aluno.nome" ng-disabled="true" />
+          </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Curso</span>
-        <input type="text" ng-model="aluno.curso" ng-disabled="true" />
-      </label>
-    </div>
+          <div>
+            <label class="field-label">Matrícula</label>
+            <input type="text" class="field-input mono-code" ng-model="aluno.matricula" ng-disabled="true" />
+          </div>
 
-    <div class="list card">
-      <div class="item item-divider" style="background-color:#0072CE; color:#FFF;">
-        Dados de Contacto e Endereço (Editáveis)
+          <div>
+            <label class="field-label">Curso de Graduação</label>
+            <input type="text" class="field-input" ng-model="aluno.curso" ng-disabled="true" />
+          </div>
+        </div>
       </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">E-mail Pessoal</span>
-        <input type="email" ng-model="aluno.email" placeholder="seuemail@dominio.com" />
-      </label>
+      <div class="panel-section">
+        <div class="panel-section-head">
+          <h3>Contatos e Endereço Residencial</h3>
+          <span>CAMPOS EDITÁVEIS</span>
+        </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Telefone / WhatsApp</span>
-        <input type="text" ng-model="aluno.telefone" placeholder="(71) 99999-9999" />
-      </label>
+        <div class="panel-form-grid">
+          <div>
+            <label class="field-label">E-mail Pessoal *</label>
+            <input type="email" class="field-input" ng-model="aluno.email" placeholder="nome@exemplo.com" />
+          </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">CEP</span>
-        <input type="text" ng-model="aluno.endereco.cep" placeholder="00000-000" />
-      </label>
+          <div>
+            <label class="field-label">Telefone / WhatsApp *</label>
+            <input type="text" class="field-input mono-code" ng-model="aluno.telefone" placeholder="(71) 99999-9999" />
+          </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Rua e Número</span>
-        <input type="text" ng-model="aluno.endereco.rua" placeholder="Nome da rua e número" />
-      </label>
+          <div>
+            <label class="field-label">CEP *</label>
+            <input type="text" class="field-input mono-code" ng-model="aluno.endereco.cep" placeholder="00000-000" />
+          </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Bairro</span>
-        <input type="text" ng-model="aluno.endereco.bairro" placeholder="Ex.: Pituaçu" />
-      </label>
+          <div>
+            <label class="field-label">Cidade / UF *</label>
+            <input type="text" class="field-input" ng-model="aluno.endereco.cidade" placeholder="Salvador - BA" />
+          </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Cidade / UF</span>
-        <input type="text" ng-model="aluno.endereco.cidade" placeholder="Salvador - BA" />
-      </label>
+          <div>
+            <label class="field-label">Logradouro e Número *</label>
+            <input type="text" class="field-input" ng-model="aluno.endereco.rua" placeholder="Rua / Avenida e número" />
+          </div>
+
+          <div>
+            <label class="field-label">Bairro *</label>
+            <input type="text" class="field-input" ng-model="aluno.endereco.bairro" placeholder="Ex.: Pituaçu" />
+          </div>
+
+          <div class="col-span-full" style="margin-top: 6px;">
+            <button
+              type="button"
+              class="button button-block btn-ucsal-primary"
+              ng-click="salvarCadastro()"
+            >
+              Salvar Alterações Cadastrais
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <button class="button button-block button-ucsal" ng-click="salvarCadastro()">
-      <i class="icon ion-checkmark-circled"></i> Salvar Alterações
-    </button>
-
   </ion-content>
 </ion-view>

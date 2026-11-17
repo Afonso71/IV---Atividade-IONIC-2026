@@ -20,13 +20,12 @@ angular.module('ucsalApp')
     }
 
     $ionicPopup.alert({
-      title: 'Código de Barras Copiado!',
-      template: '<strong>Referência:</strong> ' + parcela.mes + '<br><br>' +
-                '<strong>Linha Digitável:</strong><br>' +
-                '<code style="font-size:11px; word-break:break-all;">' +
-                parcela.codigoBarras + '</code>',
+      title: 'Linha Digitável Copiada',
+      template: '<strong>Competência:</strong> ' + parcela.mes + '<br>' +
+                '<strong>Vencimento:</strong> ' + parcela.vencimento + '<br><br>' +
+                '<div class="barcode-preview">' + parcela.codigoBarras + '</div>',
       okText: 'Fechar',
-      okType: 'button-ucsal'
+      okType: 'btn-ucsal-primary'
     });
   };
 });
