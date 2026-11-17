@@ -19,7 +19,7 @@ angular.module('ucsalApp', ['ionic'])
               '<h2 class="page-title">Extrato Financeiro por Semestre</h2>' +
             '</div>' +
             '<button type="button" class="button btn-ucsal-outline" ng-click="voltarAoMural()">' +
-              '<i class="icon ion-arrow-left-c"></i> Voltar ao Mural' +
+              '<i class="icon ion-arrow-left-c"></i> <span>Voltar ao Mural</span>' +
             '</button>' +
           '</div>' +
           '<div class="finance-toolbar">' +
@@ -37,7 +37,7 @@ angular.module('ucsalApp', ['ionic'])
             '</div>' +
           '</div>' +
           '<div class="invoice-list">' +
-            '<div class="invoice-card" ng-repeat="parcela in mensalidades | filter:{ status: filtro.statusBusca }" ng-class="parcela.status === \'Paga\' ? \'invoice-paid\' : \'invoice-pending\'">' +
+            '<div class="invoice-card" ng-repeat="parcela in mensalidades | filter:{ status: filtro.statusBusca }:compararStatusExato" ng-if="!filtro.statusBusca || parcela.status === filtro.statusBusca" ng-class="parcela.status === \'Paga\' ? \'invoice-paid\' : \'invoice-pending\'">' +
               '<div class="invoice-main-row">' +
                 '<div>' +
                   '<h3 class="invoice-month">{{ parcela.mes }}</h3>' +
@@ -51,7 +51,7 @@ angular.module('ucsalApp', ['ionic'])
               '<div class="invoice-barcode-Drawer" ng-if="parcela.status === \'A Pagar\'">' +
                 '<span class="barcode-preview">{{ parcela.codigoBarras }}</span>' +
                 '<button type="button" class="button btn-ucsal-outline" ng-click="copiarCodigoBarras(parcela)">' +
-                  '<i class="icon ion-ios-barcode-outline"></i> Copiar Código de Barras' +
+                  '<i class="icon ion-ios-barcode-outline"></i> <span>Copiar Código de Barras</span>' +
                 '</button>' +
               '</div>' +
             '</div>' +
@@ -166,6 +166,13 @@ angular.module('ucsalApp', ['ionic'])
     statusBusca: ''
   };
 
+  $scope.compararStatusExato = function(valorReal, valorBuscado) {
+    if (!valorBuscado) {
+      return true;
+    }
+    return valorReal === valorBuscado;
+  };
+
   $scope.carregarMensalidades = function() {
     $scope.mensalidades = FinanceiroService.buscarPorSemestre(
       $scope.filtro.semestreSelecionado
@@ -202,9 +209,7 @@ angular.module('ucsalApp', ['ionic'])
 
   $scope.navegarPara = function(rota) {
     $ionicSideMenuDelegate.toggleLeft(false);
-    $ionicHistory.nextViewOptions({
-      historyRoot: false
-    });
+    $ionicHistory.nextViewOptions({ historyRoot: false });
     $state.go(rota);
   };
 

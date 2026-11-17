@@ -621,4 +621,22 @@ input[readonly] {
     border-top: 1px solid #F1F5F9;
     padding-top: 10px;
   }
+
+.btn-ucsal-outline,
+.btn-ucsal-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.btn-ucsal-outline .icon,
+.btn-ucsal-outline .icon:before,
+.btn-ucsal-primary .icon,
+.btn-ucsal-primary .icon:before {
+  font-size: 16px !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
 }

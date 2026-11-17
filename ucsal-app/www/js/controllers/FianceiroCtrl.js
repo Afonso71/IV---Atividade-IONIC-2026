@@ -1,9 +1,16 @@
 angular.module('ucsalApp')
-.controller('FinanceiroCtrl', function($scope, $ionicPopup, FinanceiroService) {
+.controller('FinanceiroCtrl', function($scope, $state, $ionicHistory, $ionicPopup, FinanceiroService) {
   $scope.semestresDisponiveis = FinanceiroService.listarSemestres();
   $scope.filtro = {
     semestreSelecionado: '2026.2',
     statusBusca: ''
+  };
+
+  $scope.compararStatusExato = function(valorReal, valorBuscado) {
+    if (!valorBuscado) {
+      return true;
+    }
+    return valorReal === valorBuscado;
   };
 
   $scope.carregarMensalidades = function() {
@@ -13,6 +20,11 @@ angular.module('ucsalApp')
   };
 
   $scope.carregarMensalidades();
+
+  $scope.voltarAoMural = function() {
+    $ionicHistory.nextViewOptions({ disableBack: true });
+    $state.go('app.noticias');
+  };
 
   $scope.copiarCodigoBarras = function(parcela) {
     if (navigator.clipboard && parcela.codigoBarras) {
