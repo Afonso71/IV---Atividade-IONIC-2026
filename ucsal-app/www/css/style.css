@@ -47,14 +47,14 @@ p, span, label, input, select, button, a {
   background-image: none !important;
 }
 
-.bar.bar-ucsal .title {
-  color: #FFFFFF !important;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: -0.01em;
-}
-
-.bar.bar-ucsal .button {
+.bar.bar-ucsal .title,
+.bar.bar-ucsal .button,
+.bar.bar-ucsal .button span,
+.bar.bar-ucsal .button .icon,
+.bar.bar-ucsal .back-button,
+.bar.bar-ucsal .back-text,
+.bar.bar-ucsal .default-title,
+.bar.bar-ucsal .previous-title {
   color: #FFFFFF !important;
 }
 
